@@ -21,9 +21,18 @@ export LSCOLORS=GxdxBxDxCxEgEdxbxgxcxd
 export PATH='/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin'
 export PATH="/usr/local/sbin:$PATH"
 
-## Git completion
+## Git prompt + completion
+# Find here: https://github.com/git/git/tree/master/contrib/completion
 source ~/.git-prompt.sh
 source ~/.git-completion.bash
+
+## Fancier completion
+#[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+#if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+#  __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
+#  source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
+#fi
 
 export PROMPT_COMMAND='__git_ps1 "$BASE_PROMPT" "\\\$ "'
 export GIT_PS1_SHOWDIRTYSTATE=1
