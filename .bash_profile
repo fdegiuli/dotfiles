@@ -1,8 +1,6 @@
 source $DOTFILES/.bashrc 
 source $DOTFILES/.bash_aliases
 
-echo running
-
 eval $(thefuck --alias)
 
 ## iterm shell integration
