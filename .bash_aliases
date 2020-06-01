@@ -42,3 +42,5 @@ alias playground='cd /Users/fdegiuli/dev/playground'
 alias grep='ggrep'
 alias hgrep='history | grep'
 alias psagrep='ps aux | grep'
+
+manpdf() { man -t $1 | open -f -a /System/Applications/Preview.app; }

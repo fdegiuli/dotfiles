@@ -17,22 +17,10 @@ export BASE_PROMPT='\[[1m\]\u \W \[(B[m\]'
 export CLICOLOR=1
 export LSCOLORS=GxdxBxDxCxEgEdxbxgxcxd
 
-## paths for homebrew
-export PATH='/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin'
-export PATH="/usr/local/sbin:$PATH"
-
 ## Git prompt + completion
 # Find here: https://github.com/git/git/tree/master/contrib/completion
-source ~/.git-prompt.sh
-source ~/.git-completion.bash
-
-## Fancier completion
-#[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
-
-#if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-#  __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
-#  source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
-#fi
+source $DOTFILES/git-prompt.sh
+source $DOTFILES/git-completion.bash
 
 export PROMPT_COMMAND='__git_ps1 "$BASE_PROMPT" "\\\$ "'
 export GIT_PS1_SHOWDIRTYSTATE=1
@@ -41,7 +29,19 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWUPSTREAM=1
 
+
+## Fancier completion
+# [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+# Make Tab autocomplete regardless of filename case
+set completion-ignore-case on
+# List all matches in case multiple possible completions are possible
+set show-all-if-ambiguous on
+set menu-complete-display-prefix on
+
+# Flip through autocompletion matches with Shift-Tab.
+bind "TAB: menu-complete"
+bind "\C-q: complete"
+
 ## Autocomplete ssh aliases
 complete -o default -o nospace -W "$( grep '^Host' $HOME/.ssh/config | grep -v '*' | cut -d' ' -f2- )" scp sftp ssh rsync
-
-source ~/.bash_aliases
