@@ -11,7 +11,7 @@ curl -LJO https://raw.githubusercontent.com/git/git/master/contrib/completion/gi
 curl -LJO https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
 brew install thefuck
-# brew install bash-completion@2
+brew install bash-completion@2
 
 echo "Linking .inputrc"
 ln -s $DIR/.inputrc ~/.inputrc

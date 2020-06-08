@@ -25,13 +25,20 @@ source $DOTFILES/git-completion.bash
 export PROMPT_COMMAND='__git_ps1 "$BASE_PROMPT" "\\\$ "'
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
+# export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWUPSTREAM=1
 
 
-## Fancier completion
-# [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+## Bash-completion -- better, faster, and required for many packages
+if [[ -e "/usr/local/share/bash-completion/bash_completion" ]]; then
+	export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+	source "/usr/local/share/bash-completion/bash_completion"
+elif [[ -e "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
+	source "/usr/local/etc/profile.d/bash_completion.sh"
+elif [[ -e "/etc/bash_completion" ]]; then
+	source "/etc/bash_completion"
+fi
 
 # Make Tab autocomplete regardless of filename case
 set completion-ignore-case on
