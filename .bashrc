@@ -1,7 +1,7 @@
 ## set the history to be super long
-HISTSIZE=10000
-HISTFILESIZE=100000
-HISTTIMEFORMAT="%d/%m/%y %T "
+export HISTSIZE=10000
+export HISTFILESIZE=100000
+export HISTCONTROL=ignoreboth:erasedups
 
 ## append to history, don't overwrite it
 shopt -s histappend 
@@ -10,8 +10,9 @@ shopt -s histappend
 # export PROMPT_COMMAND='history -a; history -c; history -r; $PROMPT_COMMAND'
 
 ## change the prompt
-export PS1='\[[1m\]\u \W$ \[(B[m\]'
-export BASE_PROMPT='\[[1m\]\u \W \[(B[m\]'
+export PS1='\[[1m\]\w$ \[(B[m\]'
+export BASE_PROMPT='\[[1m\] \w \[(B[m\]'
+PROMPT_DIRTRIM=3
 
 ## add colors to ls
 export CLICOLOR=1

@@ -12,12 +12,16 @@ alias grd='git-remote-diff'
 alias gc='git checkout'
 alias gcb='git checkout -b'
 alias gs='git stash'
+alias gsu='git stash save --keep-index --include-untracked'
 alias gcm='git checkout master'
 alias gpm='git checkout master; git pull'
+alias grc='git rebase --continue'
+alias gra='git rebase --abort'
+alias grh='git reset --hard'
 # Move uncommited changes to new up-to-date branch
 gnb() { gs; gpm; gcb $1; gs pop; }
 # Destroy uncommited changes on current branch
-gdrop() {gs; gs drop;}
+gdrop() { gs; gs drop; }
 
 
 ## Hub
