@@ -28,6 +28,8 @@ gdrop() { gs; gs drop; }
 # alias git=hub
 # alias pr='git push; hub pull-request'
 
+## Gitlab
+alias mr='git push -o merge_request.create'
 
 # Git completion aliases
 __git_complete gc _git_checkout
