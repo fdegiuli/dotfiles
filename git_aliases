@@ -31,7 +31,7 @@ gdrop() { gs; gs drop; }
 ## Gitlab
 alias mr='git push -o merge_request.create'
 
-# Git completion aliases
-__git_complete gc _git_checkout
-__git_complete g _git
-__git_complete gs _git_stash
+## Git completion aliases for bash
+#__git_complete gc _git_checkout
+#__git_complete g _git
+#__git_complete gs _git_stash

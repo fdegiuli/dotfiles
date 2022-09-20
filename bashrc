@@ -7,7 +7,7 @@ export HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend 
 
 ## save everything to history as it is entered, and read history before every line
-# export PROMPT_COMMAND='history -a; history -c; history -r; $PROMPT_COMMAND'
+export PROMPT_COMMAND='history -a; history -c; $PROMPT_COMMAND'
 
 ## change the prompt
 export PS1='\[[1m\]\w$ \[(B[m\]'

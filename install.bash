@@ -3,11 +3,12 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 echo "Running install script from $DIR"
 
-echo "export DOTFILES=$DIR" >> ~/.profile
-echo "source $DIR/.bash_profile" >> ~/.profile
+echo "export DOTFILES=$DIR" >> ~/.bash_profile
+echo "source $DIR/.bash_profile" >> ~/.bash_profile
 
 # install Homebrew and use it get a bunch of things
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 brew bundle install --file=$DIR/brewfile
 
 # Download the git completion files

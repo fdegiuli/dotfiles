@@ -1,1 +1,5 @@
 git-*
+_git*
+brewfile.lock.json
+.p10k
+zsh-autosuggestions
