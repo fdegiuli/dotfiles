@@ -1,3 +1,11 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export DOTFILES=/Users/fdegiuli/dotfiles
 ## Use p10k -- leave near the top for fast prompt
 source $DOTFILES/.p10k/powerlevel10k.zsh-theme
 
@@ -28,6 +36,11 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 source $DOTFILES/aliases
 source $DOTFILES/git_aliases
 
+# zsh-specific aliases
+alias -g ...='../..'
+alias -g ....='../../..'
+alias hgrep='history 0 | grep'
+
 ## Load Git completion
 zstyle ':completion:*:*:git:*' script $DOTFILES/git-completion.bash
 fpath=($DOTFILES $fpath)
@@ -37,3 +50,17 @@ autoload -Uz compinit && compinit
 
 ## Get any stuff specific to this computer
 source ~/.profile
+
+source ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $DOTFILES/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+eval $(thefuck --alias)
+export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
+source /Users/fdegiuli/grail/ui/lims/env.bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

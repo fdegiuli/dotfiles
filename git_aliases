@@ -3,21 +3,35 @@ alias orig='find . -name "*.orig"'
 
 ## Git aliases
 alias g=git
+
 alias git-remote-log='git log origin/$(git rev-parse --abbrev-ref HEAD)'
 alias git-remote-log-diff='git log origin/$(git rev-parse --abbrev-ref HEAD)..HEAD'
 alias git-remote-diff='git diff $(git rev-parse --abbrev-ref HEAD)'
 alias grl='git-remote-log'
 alias grld='git-remote-log-diff'
 alias grd='git-remote-diff'
+
 alias gc='git checkout'
 alias gcb='git checkout -b'
+alias gst='git status'
+alias gds='git diff --staged'
+alias gbd='git branch -d'
+
 alias gs='git stash'
 alias gsu='git stash save --keep-index --include-untracked'
-alias gcm='git checkout master'
+
+alias gf='git fetch'
 alias gpm='git checkout master; git pull'
+alias grom='git rebase origin/master'
+
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
+
 alias grh='git reset --hard'
+
+
+# Commit all with message and push
+gcamp() { g commit -am $1; g push; }
 # Move uncommited changes to new up-to-date branch
 gnb() { gs; gpm; gcb $1; gs pop; }
 # Destroy uncommited changes on current branch
