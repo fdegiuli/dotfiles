@@ -1,15 +1,25 @@
+tap "go-swagger/go-swagger"
+tap "homebrew/aliases"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-versions"
-tap "homebrew/core"
+tap "homebrew/services"
+tap "tophat/bar"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 4.2+
 brew "bash-completion@2"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# International domain name library (IDNA2008, Punycode and TR46)
+brew "libidn2"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
+# Collection of GNU find, xargs, and locate
+brew "findutils"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # GNU awk utility
 brew "gawk"
 # Distributed revision control system
@@ -20,15 +30,35 @@ brew "gnu-sed"
 brew "grep"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Code-search similar to ack
-brew "the_silver_searcher"
+# Monitor data's progress through a pipe
+brew "pv"
+# Perl-powered file rename script with many helpful built-ins
+brew "rename"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
 # Programmatically correct mistyped console commands
 brew "thefuck"
 # Terminal multiplexer
 brew "tmux"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
 # Internet file retriever
 brew "wget"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
+# Collaboration tool with multi-user screen sharing
+cask "coscreen"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
 # Clipboard manager
 cask "jumpcut"
+# Keyboard customizer
+cask "karabiner-elements"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
+# Open-source code editor
+cask "visual-studio-code"
+vscode "ms-vsliveshare.vsliveshare"
+vscode "solomonkinard.git-blame"

@@ -1,5 +1,6 @@
-git-*
-_git*
+git-completion.bash
+git-prompt.sh
+_git-completion.zsh
 brewfile.lock.json
 .p10k
 zsh-autosuggestions

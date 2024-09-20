@@ -6,8 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export DOTFILES=/Users/fdegiuli/dotfiles
-## Use p10k -- leave near the top for fast prompt
-source $DOTFILES/.p10k/powerlevel10k.zsh-theme
+
 
 ## add colors to ls
 export CLICOLOR=1
@@ -33,34 +32,69 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 
 ## Load all the aliases
-source $DOTFILES/aliases
-source $DOTFILES/git_aliases
+for f in $DOTFILES/aliases/*; do source "$f"; done
 
 # zsh-specific aliases
 alias -g ...='../..'
 alias -g ....='../../..'
 alias hgrep='history 0 | grep'
+alias whence='whence -f'
 
-## Load Git completion
+source $DOTFILES/expand-dots.zsh
+
+
+# Load Git completion
 zstyle ':completion:*:*:git:*' script $DOTFILES/git-completion.bash
-fpath=($DOTFILES $fpath)
+fpath=($DOTFILES/zsh-completions/src $fpath)
 
-## start the completion
-autoload -Uz compinit && compinit
+
+# Uncomment if you turn off zsh-autocomplete
+# autoload -Uz compinit && compinit
+
+# Load fancy autocomplete
+source $DOTFILES/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# reset up and down arrow
+() {
+   local -a prefix=( '\e'{\[,O} )
+   local -a up=( ${^prefix}A ) down=( ${^prefix}B )
+   local key=
+   for key in $up[@]; do
+      bindkey "$key" up-line-or-history
+   done
+   for key in $down[@]; do
+      bindkey "$key" down-line-or-history
+   done
+}
+
+# source $DOTFILES/zsh-autosuggestions/zsh-autosuggestions.zsh
+# bindkey '^I^I' autosuggest-accept
+
+
+
+eval $(thefuck --alias)
+
+# Install fzf things
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='--bind=left:accept --no-mouse'
+# make up arrow show the history
+bindkey '^[[A' fzf-history-widget
+
+
+# export PATH="$DOTFILES/git-fuzzy/bin:$PATH"
+
+## Use p10k
+# move to the top for fast prompt
+source $DOTFILES/.p10k/powerlevel10k.zsh-theme
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ## Get any stuff specific to this computer
 source ~/.profile
 
-source ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $DOTFILES/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH="$PATH:/Users/$USER/tools"
+export PATH=$PATH:/Users/fdegiuli/tools
 
-eval $(thefuck --alias)
-export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
-source /Users/fdegiuli/grail/ui/lims/env.bash
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)

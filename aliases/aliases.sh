@@ -14,5 +14,3 @@ alias psagrep='ps aux | grep'
 # Trims leading and trailing whitespace
 alias trim="awk '{\$1=\$1}1'"
 manpdf() { man -t $1 | open -f -a /System/Applications/Preview.app; }
-
-source $DOTFILES/git_aliases

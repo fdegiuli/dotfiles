@@ -1,0 +1,15 @@
+[submodule "fast-syntax-highlighting"]
+	path = fast-syntax-highlighting
+	url = https://github.com/zdharma-continuum/fast-syntax-highlighting
+	shallow = true
+[submodule "zsh-autocomplete"]
+	path = zsh-autocomplete
+	url = https://github.com/marlonrichert/zsh-autocomplete.git
+	shallow = true
+[submodule "zsh-completions"]
+	path = zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
+	shallow = true
+[submodule "git-fuzzy"]
+	path = git-fuzzy
+	url = https://github.com/bigH/git-fuzzy.git
