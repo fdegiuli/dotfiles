@@ -88,7 +88,7 @@ bindkey '^I^I' autosuggest-accept
 }
 
 # Install fzf things
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.zf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--bind=left:accept --no-mouse'
 # make up arrow show the history
 bindkey '^[[A' fzf-history-widget
