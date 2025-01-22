@@ -53,8 +53,7 @@ alias gra='git rebase --abort'
 alias grh='git reset --hard'
 
 # Commit
-alias gcm="git commit -m"
-alias gca="git commit -a"
+alias gcam="git commit -am"
 alias gcane='git commit --amend --no-edit'
 alias gcaane='git commit -a --amend --no-edit'
 
@@ -64,7 +63,7 @@ gcamp() { g add -A; g commit -m $1; g push; }
 # Branches
 alias gb='git branch '
 # Delete every local branch merged into master -- relies on the remote server autodeleting merged branches
-alias gbclean="git fetch --prune; git branch --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" { print $1 }' | xargs -r git branch -D" 
+alias gbclean="git fetch --prune; git branch --format '%(refname:short) %(upstream:track)' | awk '\$2 == \"[gone]\" { print \$1 }' | xargs -r git branch -D" 
 
 
 # Misc

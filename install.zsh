@@ -5,6 +5,10 @@ DIR="$( cd "$( dirname "${0}" )" >/dev/null 2>&1 && pwd )"
 echo "Running install script from $DIR"
 cd $DIR
 
+echo "Fetching submodules..."
+git submodule init
+git submodule update --remote
+
 # This got hardcoded into zshrc but it's a cool way to add a line to the beginning of a file
 # echo "export DOTFILES=$DIR" | cat - zshrc > ~/.zshrc
 
@@ -22,12 +26,6 @@ brew bundle install --file=$DIR/brewfile
 
 ## Enable fzf
 $(brew --prefix)/opt/fzf/install
-
-
-## install OMZ + p10k
-# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-## echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> ~/.zshrc
 
 ## install just PL10k
 echo "getting p10k..."

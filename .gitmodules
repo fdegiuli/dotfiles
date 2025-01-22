@@ -10,6 +10,6 @@
 	path = zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
 	shallow = true
-[submodule "git-fuzzy"]
-	path = git-fuzzy
-	url = https://github.com/bigH/git-fuzzy.git
+[submodule "forgit"]
+	path = forgit
+	url = https://github.com/wfxr/forgit.git

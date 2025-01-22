@@ -1,3 +1,6 @@
+# If zsh loads slowly, uncomment this and the `zprof` at the end
+# zmodload zsh/zprof
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -43,16 +46,34 @@ alias whence='whence -f'
 source $DOTFILES/expand-dots.zsh
 
 
-# Load Git completion
-zstyle ':completion:*:*:git:*' script $DOTFILES/git-completion.bash
-fpath=($DOTFILES/zsh-completions/src $fpath)
-
-
 # Uncomment if you turn off zsh-autocomplete
-# autoload -Uz compinit && compinit
+ autoload -Uz compinit && compinit
 
 # Load fancy autocomplete
-source $DOTFILES/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# This stopped working for some reason at the end of 2024
+#source $DOTFILES/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+# Delete the stupid broken autocomplete that ships with git
+[[ ! -f /opt/homebrew/share/zsh/site-functions/_git ]] || rm /opt/homebrew/share/zsh/site-functions/_git
+
+# Load Git completion
+# Might not be necessary, zsh ships with a good one
+# zstyle ':completion:*:*:git:*' script $DOTFILES/git-completion.bash
+# fpath=($DOTFILES/zsh-completions/src $fpath)
+
+# Kubectl autocompletion
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+
+# Enable fuzzy git stuff
+# This could also be installed with homebrew
+export PATH="$DOTFILES/forgit/bin:$PATH"
+fpath=($fpath $DOTFILES/forgit/completions)
+alias gf="git forgit"
+
+source $DOTFILES/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^I^I' autosuggest-accept
+
+
 # reset up and down arrow
 () {
    local -a prefix=( '\e'{\[,O} )
@@ -66,21 +87,15 @@ source $DOTFILES/zsh-autocomplete/zsh-autocomplete.plugin.zsh
    done
 }
 
-# source $DOTFILES/zsh-autosuggestions/zsh-autosuggestions.zsh
-# bindkey '^I^I' autosuggest-accept
-
-
-
-eval $(thefuck --alias)
-
 # Install fzf things
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--bind=left:accept --no-mouse'
 # make up arrow show the history
 bindkey '^[[A' fzf-history-widget
 
 
-# export PATH="$DOTFILES/git-fuzzy/bin:$PATH"
+# Sometimes fixes commands
+eval $(thefuck --alias)
 
 ## Use p10k
 # move to the top for fast prompt
@@ -91,10 +106,9 @@ source $DOTFILES/.p10k/powerlevel10k.zsh-theme
 ## Get any stuff specific to this computer
 source ~/.profile
 
-
 export PATH="$PATH:/Users/$USER/tools"
-export PATH=$PATH:/Users/fdegiuli/tools
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+
+# zprof

@@ -4,3 +4,4 @@ _git-completion.zsh
 brewfile.lock.json
 .p10k
 zsh-autosuggestions
+*.DS_Store
