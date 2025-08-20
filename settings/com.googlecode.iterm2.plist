@@ -270,12 +270,16 @@ The script should do this: \(ai.prompt)</string>
 			</dict>
 			<key>Ansi 4 Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.72708523273468018</real>
+				<key>Color Space</key>
+				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.0</real>
+				<real>0.26806780695915222</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.21136608719825745</real>
 			</dict>
 			<key>Ansi 5 Color</key>
 			<dict>
@@ -586,6 +590,8 @@ The script should do this: \(ai.prompt)</string>
 					<string></string>
 				</dict>
 			</dict>
+			<key>Minimum Contrast</key>
+			<real>0.40326636904761903</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -721,5 +727,9 @@ The script should do this: \(ai.prompt)</string>
 	<false/>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
+	<key>kCPKSelectionViewPreferredModeKey</key>
+	<integer>0</integer>
+	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
+	<false/>
 </dict>
 </plist>

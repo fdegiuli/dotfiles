@@ -3,7 +3,6 @@ alias orig='find . -name "*.orig"'
 
 ## Git aliases
 alias g=git
-alias gf="git fuzzy"
 
 # Compare local to remote branch
 alias git-remote-log='git log origin/$(git rev-parse --abbrev-ref HEAD)'

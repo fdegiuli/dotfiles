@@ -8,7 +8,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export DOTFILES=/Users/fdegiuli/dotfiles
+export DOTFILES=$HOME/dotfiles
 
 
 ## add colors to ls
@@ -43,7 +43,7 @@ alias -g ....='../../..'
 alias hgrep='history 0 | grep'
 alias whence='whence -f'
 
-source $DOTFILES/expand-dots.zsh
+source $DOTFILES/zsh/expand-dots.zsh
 
 
 # Uncomment if you turn off zsh-autocomplete
@@ -51,7 +51,7 @@ source $DOTFILES/expand-dots.zsh
 
 # Load fancy autocomplete
 # This stopped working for some reason at the end of 2024
-#source $DOTFILES/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+#source $DOTFILES/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # Delete the stupid broken autocomplete that ships with git
 [[ ! -f /opt/homebrew/share/zsh/site-functions/_git ]] || rm /opt/homebrew/share/zsh/site-functions/_git
@@ -59,18 +59,18 @@ source $DOTFILES/expand-dots.zsh
 # Load Git completion
 # Might not be necessary, zsh ships with a good one
 # zstyle ':completion:*:*:git:*' script $DOTFILES/git-completion.bash
-# fpath=($DOTFILES/zsh-completions/src $fpath)
+# fpath=($DOTFILES/zsh/zsh-completions/src $fpath)
 
 # Kubectl autocompletion
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
 # Enable fuzzy git stuff
 # This could also be installed with homebrew
-export PATH="$DOTFILES/forgit/bin:$PATH"
-fpath=($fpath $DOTFILES/forgit/completions)
+export PATH="$DOTFILES/zsh/forgit/bin:$PATH"
+fpath=($fpath $DOTFILES/zsh/forgit/completions)
 alias gf="git forgit"
 
-source $DOTFILES/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $DOTFILES/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^I^I' autosuggest-accept
 
 
