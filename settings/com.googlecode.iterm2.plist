@@ -14,6 +14,8 @@ The script should do this: \(ai.prompt)</string>
 	<string>https://staging-gpt.grail.com:4000/v1/chat/completions</string>
 	<key>AitermUseLegacyAPI</key>
 	<false/>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>AlternateMouseScroll</key>
 	<true/>
 	<key>AlwaysUseStatusBarComposer</key>
@@ -718,7 +720,7 @@ The script should do this: \(ai.prompt)</string>
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>ShowFullScreenTabBar</key>
-	<true/>
+	<false/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>TimeBetweenTips</key>

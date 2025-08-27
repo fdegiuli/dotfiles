@@ -85,15 +85,15 @@ end
 
 # Commit all with message and push
 function gcamp
-    g add -A
-    g commit -m $argv
-    g push
+    git add -A
+    git commit -m $argv
+    git push
 end
 
 # Move uncommited changes to new up-to-date branch
 function gnb
-    gs
-    gpm
-    gcb $argv
-    gs pop
+    git stash
+    git pull origin master
+    git checkout -b $argv
+    git stash pop
 end
